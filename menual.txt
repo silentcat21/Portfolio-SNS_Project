@@ -39,4 +39,15 @@
 
  - 넥스트에 리덕스를 붙히기 위해 next-wrapper 라이브러리 사용 store폴더 만든 후 configureStore.js 생성 기본세팅 이해하기
 
- - store는 리듀서를 불러오는 곳 store, reducer, dispatch 이해
+ - store는 리듀서를 불러오는 곳(리덕스 자체) store, reducer, dispatch 이해
+
+ - import { HYDRATE } from "next-redux-wrapper" HYDRATE는 next-redux-wrapper쓸 때 필요한 액션, 서버쪽에서 실행된
+   리덕스의 결과물이 프론트에서는 HYDRATE라는 액션 이름 아래에 데이터로 전달됨
+
+ - 미들웨어 : 액션이 리듀서로 전달되기 전후로 추가 작업을 실행해주는 함수
+
+ -    const enhancer = process.env.NODE_ENV === 'production'
+       ? compose(applyMiddleware([]))
+       : compose(applyMiddleware([]))
+      const store = createStore(reducer, enhancer); 스토어에서 개발용 미들웨어를 추가해서 액션 로그를 기록할 수 있음
+	(npm i redux-devtools-extension 설치 필요(이게 있어야 브라우저 데브툴즈랑 연동이 됨))

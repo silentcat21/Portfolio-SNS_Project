@@ -25,14 +25,14 @@ const LoginForm = () => {
 
     const dispatch = useDispatch();
 
-    const [id, onChangeId] = useInput('')
-    const [password, onChangePassword] = useInput('')
+    const [id, onChangeId] = useInput('sangmin@email.com')
+    const [password, onChangePassword] = useInput('passsssword')
    
     const onSubmitForm = useCallback(() => {
         console.log(id, password);
         dispatch(loginAction({id, password}))
     }, [id, password])
-
+    
     return (
         <>
             <FormWrapper onFinish={onSubmitForm}>

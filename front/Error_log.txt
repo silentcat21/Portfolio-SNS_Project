@@ -1,0 +1,7 @@
+- 리듀서로 데이터 받을 때 user데이터가 undefine 되는 문제
+  액션 타입으로 데이터 처리를 할 때 리듀서가 초기화 되는데 switch의 default 구문이 설정되어 있지 않으면 
+  return값이 undefine되기 때문에 에러가 발생함. 따라서 reducer 스위치 구문 마지막에 default: return state가 필요함
+
+- TypeError: middleware is not a function - redux middleware 문제
+  applyMiddleware에 ([]) 직접 배열 설정을 하면 에러가 나기 때문에 const middlewares = []; 등으로 변수에 배열 선언을
+  한 뒤 applyMiddleware(...middlewares) 전개문법으로 넣어주어야 함

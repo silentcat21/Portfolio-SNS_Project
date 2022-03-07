@@ -1,14 +1,17 @@
 // configureStore.js
 import { createWrapper } from "next-redux-wrapper";
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { composeWithDevTools } from "redux-devtools-extension";
 import reducer from '../reducers'
 
 const configureStore = () => {
-    const store = createStore(reducer);
-    store.dispatch({  //dispatch 하면 리듀서로 전달이 됨
-        type: 'CHANGE_NICKNAME',
-        data: 'Choisang'
-    })
+    const middlewares = [];
+    const enhancer = process.env.NODE_ENV === 'production'
+        ? compose(applyMiddleware(...middlewares))
+        : composeWithDevTools(applyMiddleware(...middlewares))
+    const store = createStore(reducer, enhancer);
+      //dispatch 하면 리듀서로 전달이 됨
+
     return store
 };
 
